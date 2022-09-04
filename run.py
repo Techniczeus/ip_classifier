@@ -1,21 +1,33 @@
-# make an application to classify IPS
+from IPThreatment import IP
 
-from FileThreater import fthreater  # Importing class for file threatment
-from IPThreatment import IP # Importing class for IP threatment
+r_file = open(input("File name goes here: "), "r")
 
-try:                                                
-    ft1 = fthreater(input("File name goes here: "))
-except Exception:
-    print("Error, try again with a valid file! ")
+w_file = open("Results.txt", "w")
 
-def run(): # Function that runs the program
-    ft1.reader()
-    w_file = open("Results.txt", "w")   
-    ipcount = 0
+def nolines():
+    f = len(r_file.readlines())
+    return f
 
-    n = ft1.nlines()
+for li in range(nolines()):
 
-    for li in ft1.reader():
-        rawip = li
+    ips = IP(li)
 
-run()
+    raw = li
+
+    li = li.strip()
+    raw = raw.strip()
+
+    li = ips.converter(li)
+
+    if ips.validate(li) == 1:
+            ipclass = ips.csf(li)
+
+    else:
+        ipclass = "unknown"
+
+    print("IP Verified")
+    w_file.write(f"IP was classified as {ipclass}")
+
+
+r_file.close()
+w_file.close()
