@@ -1,7 +1,6 @@
 class IP:
-    def __init__(self,ip):
-        self.ip = ip
-
+    def __init__(self):
+        pass
     def csf(self,ip):
         if(ip[0]>=1 and ip[0]<=126):
             return 'A'
