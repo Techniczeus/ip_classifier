@@ -1,12 +1,11 @@
 class IP:
-    def __init__(self,ip):
-        self.ip = ip
-
-    def csf(self,ip):
+    def __init__(self)->None:
+        pass
+    def csf(self,ip): # this function classifies received ips
         if(ip[0]>=1 and ip[0]<=126):
             return 'A'
 
-        elif(ip[0]==127):
+        elif(ip[0]==127): 
             return "LocalHost"
         
         elif(ip[0]>=128 and ip[0]<=191):
@@ -22,7 +21,7 @@ class IP:
             return 'E'
 
 
-    def converter(self,ip):
+    def converter(self,ip): # converting to int
         ip = ip.split(".")
         
         for num in range(0,len(ip)):
@@ -31,7 +30,7 @@ class IP:
         return ip
 
 
-    def validate(self,ip):
+    def validate(self,ip):  # checks if current ip is valid
 	
         for num in range(0, len(ip)):
             

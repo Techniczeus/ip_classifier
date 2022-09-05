@@ -1,22 +1,23 @@
-from IPThreatment import IP
+# Build a code that classifies IPs
+
+from IPThreatment import IP # import IP class
+
+# Opening files
 
 r_file = open(input("File name goes here: "), "r")
 
 w_file = open("Results.txt", "w")
 
-def nolines():
-    f = len(r_file.readlines())
-    return f
+ips = IP()  # Recieve IP class
 
-for li in range(nolines()):
+for li in r_file.readlines():
 
-    ips = IP(li)
-
-    raw = li
+    # removing "\n" from ips
 
     li = li.strip()
+    raw = li
     raw = raw.strip()
-
+    
     li = ips.converter(li)
 
     if ips.validate(li) == 1:
@@ -26,7 +27,7 @@ for li in range(nolines()):
         ipclass = "unknown"
 
     print("IP Verified")
-    w_file.write(f"IP was classified as {ipclass}")
+    w_file.write(f"{raw} Classified as: {ipclass}\n")
 
 
 r_file.close()
