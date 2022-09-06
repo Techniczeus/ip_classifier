@@ -4,7 +4,14 @@ from IPThreatment import IP # import IP class
 
 # Opening files
 
-r_file = open(input("File name goes here: "), "r")
+check = 1
+
+while check == 1:
+    try:
+        r_file = open(input("File name goes here(No Letters): "), "r")
+        check = 0
+    except FileNotFoundError:
+        print("File not found, try again!")
 
 w_file = open("Results.txt", "w")
 
@@ -26,8 +33,15 @@ for li in r_file.readlines():
     else:
         ipclass = "unknown"
 
-    print("IP Verified")
-    w_file.write(f"{raw} Classified as: {ipclass}\n")
+    try:
+        if ipclass == "unknown":
+            print("Invalid IP")
+        else:
+            print("IP Verified")
+            w_file.write(f"{raw} Classified as: {ipclass}\n")
+    except ValueError:
+        print("Not valid")
+    
 
 
 r_file.close()
