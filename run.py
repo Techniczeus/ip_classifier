@@ -31,11 +31,12 @@ for li in r_file.readlines():
             ipclass = ips.csf(li)
 
     else:
-        ipclass = "unknown"
+        ipclass = "Unknown"
 
     try:
-        if ipclass == "unknown":
+        if ipclass == "Unknown":
             print("Invalid IP")
+            w_file.write(f"{raw} Classified as: {ipclass}\n")
         else:
             print("IP Verified")
             w_file.write(f"{raw} Classified as: {ipclass}\n")
