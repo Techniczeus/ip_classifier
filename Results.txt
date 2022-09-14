@@ -2,7 +2,3 @@
 245.10.10.0 Classified as: E
 127.0.0.1 Classified as: LocalHost
 500.10.10.0 Classified as: Unknown
-230.10.10.0 Classified as: D
-200.10.10.0 Classified as: C
-200.500.10.0 Classified as: Unknown
-10.10.10.10 Classified as: A
